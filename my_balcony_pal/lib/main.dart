@@ -150,6 +150,30 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
+
+bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed, // Fixed 
+        backgroundColor: Colors.green[300],
+        selectedItemColor: Colors.white70,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.yard_outlined),
+            label: 'Plants',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.menu),
+            label: 'Rules',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.error_outline),
+            label: 'Alerts',
+          ),
+        ],
+      ),
     );
   }
 }
