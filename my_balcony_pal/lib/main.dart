@@ -13,18 +13,17 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'My Balcony Pal',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.green,
-        canvasColor: Colors.grey[200]
-      ),
+          // This is the theme of your application.
+          //
+          // Try running your application with "flutter run". You'll see the
+          // application has a blue toolbar. Then, without quitting the app, try
+          // changing the primarySwatch below to Colors.green and then invoke
+          // "hot reload" (press "r" in the console where you ran "flutter run",
+          // or simply save your changes to "hot reload" in a Flutter IDE).
+          // Notice that the counter didn't reset back to zero; the application
+          // is not restarted.
+          primarySwatch: Colors.green,
+          canvasColor: Colors.grey[200]),
       home: const MyHomePage(title: 'My Balcony Pal'),
     );
   }
@@ -64,13 +63,15 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    const drawerIcons = [Icon(Icons.person_outline), 
-                        Icon(Icons.edit_note), 
-                        Icon(Icons.source_outlined), 
-                        Icon(Icons.insights), 
-                        Icon(Icons.settings),
-                        Icon(Icons.local_florist),
-                        Icon(Icons.help_outlined)];
+    const drawerIcons = [
+      Icon(Icons.person_outline),
+      Icon(Icons.edit_note),
+      Icon(Icons.source_outlined),
+      Icon(Icons.insights),
+      Icon(Icons.settings),
+      Icon(Icons.local_florist),
+      Icon(Icons.help_outlined)
+    ];
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -83,28 +84,33 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: const Center(
-        child: Text('My Page!'),
+
+      body: Column(
+        children: [
+          WelcomeText('Dan'),
+          Section('Balcony'),
+          BalconyInfo(),
+          Section('Plants'),
+          PlantList(),
+          Section('Reminders'),
+          ReminderList(),
+        ],
       ),
-    
 
       //TÄÄ on oikea menu debugin alla piilossa
       endDrawer: Drawer(
-        child: ListView (
+        child: ListView(
           // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
           children: [
             ListTile(
               leading: Icon(Icons.person_outline),
               title: const Text('Name'),
-              
               onTap: () {
                 Navigator.pop(context);
               },
             ),
-            const Divider(
-            color: Colors.grey
-          ),
+            const Divider(color: Colors.grey),
             ListTile(
               leading: Icon(Icons.edit_note),
               title: const Text('Notes'),
@@ -140,7 +146,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Navigator.pop(context);
               },
             ),
-             ListTile(
+            ListTile(
               leading: Icon(Icons.help_outline),
               title: const Text('Help & Feedback'),
               onTap: () {
@@ -151,8 +157,8 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
 
-bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed, // Fixed 
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed, // Fixed
         backgroundColor: Colors.green[300],
         selectedItemColor: Colors.white70,
         items: const <BottomNavigationBarItem>[
@@ -175,5 +181,137 @@ bottomNavigationBar: BottomNavigationBar(
         ],
       ),
     );
+  }
+}
+
+class WelcomeText extends StatelessWidget {
+  String name;
+
+  WelcomeText(this.name);
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        padding: const EdgeInsets.all(15),
+        child: Text('Welcome back, $name!', style: TextStyle(fontSize: 25)));
+  }
+}
+
+class Section extends StatelessWidget {
+  final String category;
+
+  Section(this.category);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      padding: EdgeInsets.fromLTRB(15, 35, 10, 10),
+      child: Text(category,
+          textAlign: TextAlign.left, style: TextStyle(fontSize: 20)),
+    );
+  }
+}
+
+class BalconyInfo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+      Container(
+          height: 100,
+          width: 100,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.green[400]),
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text('Temperature'),
+                Text('24 C',
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold))
+              ])),
+      Container(
+          height: 100,
+          width: 100,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.green[200]),
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text('Humidity'),
+                Text('62%',
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold))
+              ])),
+      Container(
+          height: 100,
+          width: 100,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10), color: Colors.teal[100]),
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text('Water Tank'),
+                Text('9%',
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold))
+              ])),
+    ]);
+  }
+}
+
+class PlantList extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+      Plant('Chili peppers'),
+      Plant('Cherry Tomatoes'),
+      Plant('Monstera'),
+    ]);
+  }
+}
+
+//tää on vielä placeholder
+class Plant extends StatelessWidget {
+  String species;
+
+  Plant(this.species);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialButton(
+        minWidth: 100,
+        child: Text(species),
+        color: Colors.green[200],
+        shape: const CircleBorder(),
+        onPressed: () {});
+  }
+}
+
+class ReminderList extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(children: [
+      Reminder('Today', 'Check cherry tomatoes'),
+      Reminder('10 days to', 'Add nutrients')
+    ]);
+  }
+}
+
+class Reminder extends StatelessWidget {
+  final String when;
+  final String toDo;
+
+  Reminder(this.when, this.toDo);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(children: [
+      Padding(
+          padding: EdgeInsets.fromLTRB(15, 10, 10, 10),
+          child: SizedBox(
+              width: 100,
+              child:
+                  Text(when, style: TextStyle(fontWeight: FontWeight.bold)))),
+      Text(toDo)
+    ]);
   }
 }
