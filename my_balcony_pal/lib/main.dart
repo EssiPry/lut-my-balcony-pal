@@ -32,6 +32,8 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        backgroundColor: Color(0xFFB0D494),
+        foregroundColor: Colors.black87,
       ),
 
       endDrawer: SideDrawer(),
@@ -119,9 +121,9 @@ class BalconyInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(children: [Section('Balcony'),
     Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-      BalconyObject('Temperature', '24C',Colors.green[400]),
-      BalconyObject('Humidity', '62%', Colors.green[200]),
-      BalconyObject('Water tank', '24C', Colors.teal[100]),
+      BalconyObject('Temperature', '24C',Color(0xFFB0D494)),
+      BalconyObject('Humidity', '62%', Color.fromARGB(255, 198, 221, 183)),
+      BalconyObject('Water tank', '24C', Color.fromARGB(255, 187, 235, 220)),
      
     ])]);
   }
@@ -147,8 +149,8 @@ class BottomMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       type: BottomNavigationBarType.fixed, // Fixed
-      backgroundColor: Colors.green[300],
-      selectedItemColor: Colors.white70,
+      backgroundColor: Color(0xFFB0D494),
+      selectedItemColor: Colors.black87 ,
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
@@ -232,8 +234,9 @@ class Plant extends StatelessWidget {
     return ElevatedButton(
   onPressed: () {},
   child: null,
+  
   style: ElevatedButton.styleFrom(
-    
+    primary: Color(0xFFB0D494),
     shape: CircleBorder(),
     padding: EdgeInsets.all(24),
      fixedSize: const Size(110,110)
