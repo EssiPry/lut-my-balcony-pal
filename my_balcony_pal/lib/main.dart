@@ -48,24 +48,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     const drawerIcons = [
       Icon(Icons.person_outline),
-      Icon(Icons.edit_note),
+      //Icon(Icons.edit_note), heittää erroria
       Icon(Icons.source_outlined),
       Icon(Icons.insights),
       Icon(Icons.settings),
@@ -111,13 +98,14 @@ class _MyHomePageState extends State<MyHomePage> {
               },
             ),
             const Divider(color: Colors.grey),
-            ListTile(
-              leading: Icon(Icons.edit_note),
-              title: const Text('Notes'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
+            // tämä heittää erroria jostain syystä
+            //ListTile(
+            //  leading: Icon(Icons.edit_note),
+            //  title: const Text('Notes'),
+            //  onTap: () {
+            //    Navigator.pop(context);
+            //  },
+            //),
             ListTile(
               leading: Icon(Icons.source_outlined),
               title: const Text('Data'),
@@ -203,12 +191,19 @@ class Section extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      padding: EdgeInsets.fromLTRB(15, 35, 10, 10),
-      child: Text(category,
-          textAlign: TextAlign.left, style: TextStyle(fontSize: 20)),
-    );
+    return Row(children: [
+      Container(
+        padding: EdgeInsets.all(15),
+        child: Text(category,
+            textAlign: TextAlign.left, style: TextStyle(fontSize: 20)),
+      ),
+      Spacer(),
+      FloatingActionButton(
+          mini: true,
+          onPressed: () {},
+          backgroundColor: Colors.green[200],
+          child: Icon(Icons.add))
+    ]);
   }
 }
 
@@ -217,8 +212,8 @@ class BalconyInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
       Container(
-          height: 100,
-          width: 100,
+          height: 110,
+          width: 110,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               color: Colors.green[400]),
@@ -230,8 +225,8 @@ class BalconyInfo extends StatelessWidget {
                     style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold))
               ])),
       Container(
-          height: 100,
-          width: 100,
+          height: 110,
+          width: 110,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               color: Colors.green[200]),
@@ -243,8 +238,8 @@ class BalconyInfo extends StatelessWidget {
                     style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold))
               ])),
       Container(
-          height: 100,
-          width: 100,
+          height: 110,
+          width: 110,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10), color: Colors.teal[100]),
           child: Column(
@@ -263,13 +258,13 @@ class PlantList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
       Plant('Chili peppers'),
-      Plant('Cherry Tomatoes'),
+      Plant('Tomatoes'),
       Plant('Monstera'),
     ]);
   }
 }
 
-//tää on vielä placeholder
+//tästä puuttuu taustakuvat ja kokoa pitää vielä säätää
 class Plant extends StatelessWidget {
   String species;
 
@@ -277,15 +272,16 @@ class Plant extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialButton(
-        minWidth: 100,
+    return ElevatedButton(
         child: Text(species),
-        color: Colors.green[200],
-        shape: const CircleBorder(),
-        onPressed: () {});
+        onPressed: () {},
+        style: ElevatedButton.styleFrom(
+            fixedSize: const Size(120, 120), shape: const CircleBorder()));
   }
 }
 
+// tämä voisi olla myös Erikan ehdottama ListTile + ListView
+//ListTilessa on ikoni + yksi, kaksi tai kolme riviä tekstiä
 class ReminderList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
