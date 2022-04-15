@@ -35,7 +35,6 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
 
       endDrawer: SideDrawer(),
-      
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -45,7 +44,6 @@ class _MyHomePageState extends State<MyHomePage> {
           ReminderList(),
         ],
       ),
-
       bottomNavigationBar: BottomMenu()
     );
   }
@@ -59,44 +57,34 @@ class WelcomeText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: const EdgeInsets.all(15),
-        child: Text('Welcome back, $name!', style: TextStyle(fontSize: 25)));
+      padding: const EdgeInsets.all(15),
+      child: Text('Welcome back, $name!', style: TextStyle(fontSize: 25)));
   }
 }
 
 class Section extends StatelessWidget {
   final String category;
-  var color = Colors.transparent;
   Section(this.category);
-
   @override
   Widget build(BuildContext context) {
-    return Container(
-      //width: MediaQuery.of(context).size.width,
-      padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
-      child: Column (mainAxisAlignment: MainAxisAlignment.start,crossAxisAlignment: CrossAxisAlignment.end,
-        children: [ 
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text(category,style: TextStyle(fontSize: 25,  fontWeight: FontWeight.w600)
-            ),
-          ),
-          Align(
-            alignment: Alignment.bottomRight,
-            child: IconButton(
+
+    return 
+      Padding(
+        padding: EdgeInsets.only(left:10, right: 5), 
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+          Text(category,style: TextStyle(fontSize: 25, fontWeight: FontWeight.w600)),
+          IconButton(
             splashColor: Colors.transparent,
             highlightColor: Colors.transparent,  
             hoverColor: Colors.transparent,
             icon: const Icon(Icons.add),
-            //tooltip: 'Increase volume by 10',
-            onPressed: () {
-            Null;
-            },
-          ),
-          ),
-       ],
-     ),
-    );
+          //tooltip: 'Increase volume by 10',
+            onPressed: () {},
+          )
+          ]
+        ));
   }
 }
 
@@ -108,19 +96,21 @@ class BalconyObject extends StatelessWidget {
   BalconyObject(this.text, this.number, this.color);
   Widget build(BuildContext context) {
     return Container(
-          height: 110,
-          width: 110,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: color),
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text(text,
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
-                Text(number,
-                    style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold))
-              ]));
+      height: 110,
+      width: 110,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: color),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text(text,
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+            Text(number,
+              style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold))
+          ]
+        )
+      );
   }
 }
 
