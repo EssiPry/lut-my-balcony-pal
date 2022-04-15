@@ -37,13 +37,11 @@ class _MyHomePageState extends State<MyHomePage> {
       endDrawer: SideDrawer(),
       
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           WelcomeText('Dan'),
-          Section('Balcony'),
           BalconyInfo(),
-          Section('Plants'),
           PlantList(),
-          Section('Reminders'),
           ReminderList(),
         ],
       ),
@@ -74,8 +72,8 @@ class Section extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width,
-      padding: EdgeInsets.fromLTRB(15, 35, 10, 10),
+      //width: MediaQuery.of(context).size.width,
+      padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
       child: Column (mainAxisAlignment: MainAxisAlignment.start,crossAxisAlignment: CrossAxisAlignment.end,
         children: [ 
           Align(
@@ -105,46 +103,50 @@ class Section extends StatelessWidget {
 class BalconyInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+    return Column(children: [Section('Balcony'),
+    Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
       Container(
-          height: 100,
-          width: 100,
+          height: 110,
+          width: 110,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               color: Colors.green[400]),
           child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Text('Temperature'),
+                Text('Temperature',
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
                 Text('24 C',
                     style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold))
               ])),
       Container(
-          height: 100,
-          width: 100,
+           height: 110,
+          width: 110,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               color: Colors.green[200]),
           child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Text('Humidity'),
+                Text('Humidity',
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
                 Text('62%',
                     style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold))
               ])),
       Container(
-          height: 100,
-          width: 100,
+          height: 110,
+          width: 110,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10), color: Colors.teal[100]),
           child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Text('Water Tank'),
+                Text('Water Tank',
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
                 Text('9%',
                     style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold))
               ])),
-    ]);
+    ])]);
   }
 }
 
@@ -217,11 +219,13 @@ class PlantList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+    return 
+    Column(children: [Section('Plants'),
+    Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
       Plant('Chili peppers'),
       Plant('Cherry Tomatoes'),
       Plant('Monstera'),
-    ]);
+    ])]);
   }
 }
 
@@ -246,6 +250,7 @@ class ReminderList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
+      Section('Reminders'),
       Reminder('Today', 'Check cherry tomatoes'),
       Reminder('10 days to', 'Add nutrients')
     ]);
