@@ -100,52 +100,39 @@ class Section extends StatelessWidget {
   }
 }
 
+class BalconyObject extends StatelessWidget {
+  String text;
+  String number;
+  var color;
+ 
+  BalconyObject(this.text, this.number, this.color);
+  Widget build(BuildContext context) {
+    return Container(
+          height: 110,
+          width: 110,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: color),
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text(text,
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+                Text(number,
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold))
+              ]));
+  }
+}
+
 class BalconyInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: [Section('Balcony'),
     Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-      Container(
-          height: 110,
-          width: 110,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: Colors.green[400]),
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text('Temperature',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
-                Text('24 C',
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold))
-              ])),
-      Container(
-           height: 110,
-          width: 110,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: Colors.green[200]),
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text('Humidity',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
-                Text('62%',
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold))
-              ])),
-      Container(
-          height: 110,
-          width: 110,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10), color: Colors.teal[100]),
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text('Water Tank',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
-                Text('9%',
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold))
-              ])),
+      BalconyObject('Temperature', '24C',Colors.green[400]),
+      BalconyObject('Humidity', '62%', Colors.green[200]),
+      BalconyObject('Water tank', '24C', Colors.teal[100]),
+     
     ])]);
   }
 }
