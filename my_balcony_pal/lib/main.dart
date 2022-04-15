@@ -119,7 +119,7 @@ class BalconyObject extends StatelessWidget {
                 Text(text,
                     style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
                 Text(number,
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold))
+                    style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold))
               ]));
   }
 }
@@ -209,27 +209,46 @@ class PlantList extends StatelessWidget {
     return 
     Column(children: [Section('Plants'),
     Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-      Plant('Chili peppers'),
-      Plant('Cherry Tomatoes'),
-      Plant('Monstera'),
+      PlantObject('Chili peppers'),
+      PlantObject('Cherry Tomatoes'),
+      PlantObject('Monstera')
     ])]);
   }
 }
 
-//tää on vielä placeholder
-class Plant extends StatelessWidget {
-  String species;
-
-  Plant(this.species);
-
+class PlantObject extends StatelessWidget {
+  String text;
+  PlantObject(this.text);
   @override
   Widget build(BuildContext context) {
-    return MaterialButton(
-        minWidth: 100,
-        child: Text(species),
-        color: Colors.green[200],
-        shape: const CircleBorder(),
-        onPressed: () {});
+    return  Container(
+        child:
+        Column(children: [Plant(), 
+        Padding(
+          padding: EdgeInsets.only(top:10), //apply padding to all four sides
+          child: Text(text)
+          )
+        ],
+      ),
+    );
+  }
+}
+
+
+//tää on vielä placeholder
+class Plant extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+  onPressed: () {},
+  child: null,
+  style: ElevatedButton.styleFrom(
+    
+    shape: CircleBorder(),
+    padding: EdgeInsets.all(24),
+     fixedSize: const Size(110,110)
+  ),
+);
   }
 }
 
