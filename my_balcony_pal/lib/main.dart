@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,18 +10,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'My Balcony Pal',
+   
       theme: ThemeData(
         primarySwatch: Colors.green,
         canvasColor: Colors.grey[200]),
-      home: const MyHomePage(title: 'My Balcony Pal'),
+      home: const MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-  final String title;
+  const MyHomePage({Key? key}) : super(key: key);
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -31,7 +31,6 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
         backgroundColor: Color(0xFFB0D494),
         foregroundColor: Colors.black87,
       ),
@@ -59,8 +58,18 @@ class WelcomeText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(15),
-      child: Text('Welcome back, $name!', style: TextStyle(fontSize: 25)));
+        
+      padding: const EdgeInsets.all(24),
+      child: 
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text('Welcome back, ', style: GoogleFonts.mavenPro(textStyle: TextStyle(letterSpacing: .5, fontSize: 30, fontWeight: FontWeight.w600))),
+          Text('$name!', style: GoogleFonts.mavenPro(textStyle: TextStyle(letterSpacing: .5, fontSize: 30, fontWeight: FontWeight.w900)))
+      ]
+      )
+    );
+      
   }
 }
 
@@ -72,11 +81,11 @@ class Section extends StatelessWidget {
 
     return 
       Padding(
-        padding: EdgeInsets.only(left:10, right: 5), 
+        padding: EdgeInsets.only(left:16, right: 5, bottom: 8), 
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-          Text(category,style: TextStyle(fontSize: 25, fontWeight: FontWeight.w600)),
+          Text(category,style: GoogleFonts.roboto(textStyle: TextStyle(letterSpacing: .5, fontSize: 22, fontWeight: FontWeight.bold))),
           IconButton(
             splashColor: Colors.transparent,
             highlightColor: Colors.transparent,  
@@ -107,9 +116,9 @@ class BalconyObject extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Text(text,
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+              style: GoogleFonts.roboto(textStyle: TextStyle(letterSpacing: .5, fontSize: 15, fontWeight: FontWeight.bold))),
             Text(number,
-              style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold))
+              style:GoogleFonts.roboto(textStyle: TextStyle(letterSpacing: .5, fontSize: 36, fontWeight: FontWeight.w700)))
           ]
         )
       );
@@ -150,7 +159,7 @@ class BottomMenu extends StatelessWidget {
     return BottomNavigationBar(
       type: BottomNavigationBarType.fixed, // Fixed
       backgroundColor: Color(0xFFB0D494),
-      selectedItemColor: Colors.black87 ,
+      selectedItemColor: Colors.black ,
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
@@ -300,11 +309,11 @@ class Reminder extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(children: [
       Padding(
-          padding: EdgeInsets.fromLTRB(15, 10, 10, 10),
+          padding: EdgeInsets.fromLTRB(24, 10, 10, 10),
           child: SizedBox(
               width: 100,
               child:
-                  Text(when, style: TextStyle(fontWeight: FontWeight.bold)))),
+                  Text(when, style: GoogleFonts.roboto(textStyle: TextStyle(letterSpacing: .5, fontSize: 15, fontWeight: FontWeight.bold))))),
       Text(toDo)
     ]);
   }
