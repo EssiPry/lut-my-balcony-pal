@@ -227,21 +227,22 @@ class PlantList extends StatelessWidget {
     return 
     Column(children: [Section('Plants'),
     Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-      PlantObject('Chili peppers'),
-      PlantObject('Cherry Tomatoes'),
-      PlantObject('Monstera')
+      PlantObject('Chili peppers', 'chili'),
+      PlantObject('Cherry Tomatoes', 'tomato'),
+      PlantObject('Monstera', 'monstera')
     ])]);
   }
 }
 
 class PlantObject extends StatelessWidget {
   String text;
-  PlantObject(this.text);
+  String pic;
+  PlantObject(this.text, this.pic);
   @override
   Widget build(BuildContext context) {
     return  Container(
         child:
-        Column(children: [Plant(), 
+        Column(children: [Plant(pic), 
         Padding(
           padding: EdgeInsets.only(top:10), //apply padding to all four sides
           child: Text(text)
@@ -255,17 +256,24 @@ class PlantObject extends StatelessWidget {
 
 //tää on vielä placeholder
 class Plant extends StatelessWidget {
+  String pic;
+  Plant(this.pic);
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-  onPressed: () {},
-  child: null,
-  
-  style: ElevatedButton.styleFrom(
-    primary: Color(0xFFB0D494),
-    shape: CircleBorder(),
-    padding: EdgeInsets.all(24),
-     fixedSize: const Size(110,110)
+    return InkWell(
+    borderRadius: BorderRadius.circular(50.0),
+  onTap: () {}, // Handle your callback.
+  splashColor: Colors.green.withOpacity(0.5),
+  child: Ink(
+    height: 100,
+    width: 100,
+    decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(50.0),
+      image: DecorationImage(
+        image: AssetImage('$pic.jpg'),
+        fit: BoxFit.cover,
+      ),
+    ),
   ),
 );
   }
