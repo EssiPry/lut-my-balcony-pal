@@ -159,8 +159,8 @@ class BalconyInfo extends StatelessWidget {
     return Column(children: [Section('Balcony'),
     Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
       BalconyObject('Temperature', '24°C',Color(0xFFB0D494)),
-      BalconyObject('Humidity', '62%', Color.fromARGB(255, 198, 221, 183)),
-      BalconyObject('Water tank', '9%', Color.fromARGB(255, 187, 235, 220)),
+      BalconyObject('Humidity', '62%', Color(0xFFC6DDB7)),
+      BalconyObject('Water tank', '9%', Color(0xFFBBEBDC)),
      
     ])]);
   }
@@ -186,7 +186,7 @@ class BottomMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       type: BottomNavigationBarType.fixed, // Fixed
-      backgroundColor: Color(0xFFB0D494),
+      backgroundColor: Color(0xFFC6DDB7),
       selectedItemColor: Colors.black ,
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
