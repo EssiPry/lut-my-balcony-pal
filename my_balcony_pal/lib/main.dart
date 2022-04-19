@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
    
       theme: ThemeData(
         primarySwatch: Colors.green,
@@ -64,28 +65,44 @@ class WelcomeText extends StatelessWidget {
       Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('Welcome back, ', style: GoogleFonts.mavenPro(textStyle: TextStyle(letterSpacing: .5, fontSize: 30, fontWeight: FontWeight.w600))),
-          Text('$name!', style: GoogleFonts.mavenPro(textStyle: TextStyle(letterSpacing: .5, fontSize: 30, fontWeight: FontWeight.w900)))
-      ]
+          Text('Welcome back, ',  
+            style:TextStyle(
+              letterSpacing: .5, 
+              fontSize: 30, 
+              fontFamily: 'Graphie', 
+              fontWeight: FontWeight.w800)
+          ),
+          Text('$name!',
+            style:TextStyle(
+              letterSpacing: .5,
+              fontSize: 30,
+              fontFamily: 'Graphie',
+              fontWeight: FontWeight.w900)
+          ),
+        ]
       )
     );
-      
   }
 }
 
 class Section extends StatelessWidget {
   final String category;
-  Section(this.category);
+  const Section(this.category, {Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-
     return 
       Padding(
         padding: EdgeInsets.only(left:16, right: 5, bottom: 8), 
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-          Text(category,style: GoogleFonts.roboto(textStyle: TextStyle(letterSpacing: .5, fontSize: 22, fontWeight: FontWeight.bold))),
+           Text(category,
+            style:const TextStyle(
+              letterSpacing: .5, 
+              fontSize: 22, 
+              fontFamily: 'Roboto', 
+              fontWeight: FontWeight.w600)
+          ),
           IconButton(
             splashColor: Colors.transparent,
             highlightColor: Colors.transparent,  
@@ -95,7 +112,8 @@ class Section extends StatelessWidget {
             onPressed: () {},
           )
           ]
-        ));
+        )
+      );
   }
 }
 
@@ -116,9 +134,19 @@ class BalconyObject extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Text(text,
-              style: GoogleFonts.roboto(textStyle: TextStyle(letterSpacing: .5, fontSize: 15, fontWeight: FontWeight.bold))),
+            style:const TextStyle(
+              letterSpacing: .5, 
+              fontSize: 14, 
+              fontFamily: 'Roboto', 
+              fontWeight: FontWeight.w600)
+          ),
             Text(number,
-              style:GoogleFonts.roboto(textStyle: TextStyle(letterSpacing: .5, fontSize: 36, fontWeight: FontWeight.w700)))
+            style:const TextStyle(
+              letterSpacing: .5, 
+              fontSize: 36, 
+              fontFamily: 'Roboto', 
+              fontWeight: FontWeight.w600)
+          ),
           ]
         )
       );
@@ -130,9 +158,9 @@ class BalconyInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(children: [Section('Balcony'),
     Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-      BalconyObject('Temperature', '24C',Color(0xFFB0D494)),
+      BalconyObject('Temperature', '24°C',Color(0xFFB0D494)),
       BalconyObject('Humidity', '62%', Color.fromARGB(255, 198, 221, 183)),
-      BalconyObject('Water tank', '24C', Color.fromARGB(255, 187, 235, 220)),
+      BalconyObject('Water tank', '9%', Color.fromARGB(255, 187, 235, 220)),
      
     ])]);
   }
@@ -279,7 +307,7 @@ class Plant extends StatelessWidget {
     decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(50.0),
       image: DecorationImage(
-        image: AssetImage('$pic.jpg'),
+        image: AssetImage('images/$pic.jpg'),
         fit: BoxFit.cover,
       ),
     ),
@@ -311,10 +339,23 @@ class Reminder extends StatelessWidget {
       Padding(
           padding: EdgeInsets.fromLTRB(24, 10, 10, 10),
           child: SizedBox(
-              width: 100,
+              width: 150,
               child:
-                  Text(when, style: GoogleFonts.roboto(textStyle: TextStyle(letterSpacing: .5, fontSize: 15, fontWeight: FontWeight.bold))))),
-      Text(toDo)
-    ]);
+              Text(when,
+                style:const TextStyle(
+                letterSpacing: .5, 
+                fontSize: 19, 
+                fontFamily: 'Roboto', 
+                fontWeight: FontWeight.w600)
+                ))
+              ),
+      Text(toDo,
+                style:const TextStyle(
+                letterSpacing: .5, 
+                fontSize: 18, 
+                fontFamily: 'Roboto', 
+                )
+                )
+              ]); 
   }
 }
