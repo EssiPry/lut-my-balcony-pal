@@ -1,8 +1,9 @@
 ### My Balcony Pal
 
-A flutter prototype of My Balcony Pal -application.
+This is a flutter prototype of My Balcony Pal -application dashboard.
 
-To run procject:
+#### To run the flutter prototype:
+
 Go to my-balcony-pal folder
 
 Run commands:
@@ -10,3 +11,5 @@ Run commands:
  flutter build web
  flutter run
  ```
+
+The application will start in a new window.
