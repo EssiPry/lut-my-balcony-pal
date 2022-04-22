@@ -28,7 +28,10 @@ https://unsplash.com/photos/trLH1jzemt8
 
 ##### Fonts: 
 
+Roboto
 https://www.dafont.com/roboto.font
+
+Graphie
 https://dafonttop.com/graphie.font
 
 
