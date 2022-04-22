@@ -13,3 +13,25 @@ Run commands:
  ```
 
 The application will start in a new window.
+
+#### Pictures and fonts used in project:
+
+##### Pictures:
+Chili
+https://unsplash.com/photos/L2xhGmPmMNs
+
+Cherry tomato
+https://unsplash.com/photos/4LiUI-Y2mI8
+
+Monstera
+https://unsplash.com/photos/trLH1jzemt8
+
+##### Fonts: 
+
+https://www.dafont.com/roboto.font
+https://dafonttop.com/graphie.font
+
+
+
+
+
